@@ -18,10 +18,12 @@ def load_docs(src_dir: str) -> list:
     for dirpath, dirnames, filenames in os.walk((src_dir)):
         for file in filenames:
             try:
-                loader = TextLoader(os.path.join(dirpath, file), encoding="utf-8")
+                loader = TextLoader(os.path.join(
+                    dirpath, file), encoding='utf-8')
                 docs.extend(loader.load_and_split())
             except Exception as e:
-                pass
+                print(f"An error occurred: {e}")
+
     return docs
 
 
@@ -51,6 +53,5 @@ docs = load_docs(os.getenv('SRC_DIR'))
 
 # ドキュメントをチャンクに分割
 chunks = documents_to_chunks(docs)
-
 # Embeddingして、DeepLakeにアップロード
 embeddings = chunks_to_embeddings(chunks, os.getenv('DATA_SET_NAME'))

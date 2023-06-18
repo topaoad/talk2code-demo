@@ -5,6 +5,8 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from getpass import getpass
 from dotenv import load_dotenv
+# from langchain.chains import RetrievalQA
+# from langchain.llms import OpenAIChat
 
 load_dotenv()
 
@@ -18,13 +20,15 @@ vector_store = DeepLake(
 # Retrieverを定義
 retriever = vector_store.as_retriever()
 retriever.search_kwargs["distance_metric"] = "cos"
-retriever.search_kwargs["fetch_k"] = 20
+retriever.search_kwargs["fetch_k"] = 100
 retriever.search_kwargs["maximal_marginal_relevance"] = True
 retriever.search_kwargs["k"] = 20
 
 # Chainを定義
-model = ChatOpenAI(model_name="gpt-4")  # 'ada' 'gpt-3.5-turbo' 'gpt-4',
+model = ChatOpenAI(model_name="gpt-3.5-turbo")  # 'ada' 'gpt-3.5-turbo' 'gpt-4',
 cr_chain = ConversationalRetrievalChain.from_llm(model, retriever=retriever)
+# issueの修正案。うまくいっていない。
+# cr_chain = RetrievalQA.from_chain_type(llm=OpenAIChat(model='gpt-3.5-turbo'), chain_type='stuff', retriever=retriever)
 
 
 def ask(question: str, chat_history: list) -> str:
@@ -41,3 +45,5 @@ while True:
 
     print("Code:", answer)
     chat_history.append((question, answer))
+
+
