@@ -55,14 +55,18 @@ Code: `GoogleCalendarClient` is a class that extends the `CalendarClient` abstra
 - openai.error.InvalidRequestError: This model's maximum context length is 4097 tokens. However, your messages resulted in 13077 tokens. Please reduce the length of the messages.
 とのこと。テキストのチャンク化がうまくいっていないため、トークンが上限を超えている模様。
 
-###　試したこと
+### 解決のために試したこと
 以下のサイトのように、text_splitterにseparator="\n"を追加したらうまくいった
-https://ict-worker.com/ai/langchain-chunk.html
-### 試しに聞いてみたプロンプトの例
-srcコードの中身を説明してください
-ソースコード内の認証の仕組みを教えてください
-Calendar.tsxの中身を教えてください
-Calendar.tsx内のリファクタはできますか
-先ほどの質問は覚えていますか
-react-router-domは使われていますか。使われているとしたらどこのコンポーネントですか
-続きを教えてください
+- https://ict-worker.com/ai/langchain-chunk.html
+### サンプルコードに対して試しに聞いてみたプロンプトの例
+- srcコードの中身を説明してください
+- ソースコード内の認証の仕組みを教えてください
+- Calendar.tsxの中身を教えてください
+- Calendar.tsx内のリファクタはできますか
+- 先ほどの質問は覚えていますか
+- react-router-domは使われていますか。使われているとしたらどこのコンポーネントですか
+- 続きを教えてください
+
+### 今後こんなことに使えたらいいなーの例
+- ソースコードの保全（リファクタやドキュメントの拡充など）
+- テキストを埋め込み、問い合わせなどのサポート対応
