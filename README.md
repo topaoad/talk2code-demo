@@ -51,14 +51,18 @@ You: What does GoogleCalendarClient do?
 Code: `GoogleCalendarClient` is a class that extends the `CalendarClient` abstract class and provides implementation for Google Calendar specific functionalities. It is responsible for interacting with the Google Calendar API and performing various operations such as fetching calendar details, listing calendars, adding, updating, and deleting events, and managing calendar notification channels. It helps in managing and synchronizing Google Calendar data within the application.
 ```
 
-## 進捗
-
+## 挙動しない件
 - openai.error.InvalidRequestError: This model's maximum context length is 4097 tokens. However, your messages resulted in 13077 tokens. Please reduce the length of the messages.
-  - 4096 トークンまでしか入力できないとのことで、これらについては解決方法を模索中（6/18）
-- gpt-3.5-turbo は稼働するが、gpt ー４は読んでくれない（ウェイティングリスト待ちが必要？）
-  → 次のイシューと同じ？と思ってやり始めたが、現在のところうまくいってない。
-  https://github.com/hwchase17/langchain/issues/3328
+とのこと。テキストのチャンク化がうまくいっていないため、トークンが上限を超えている模様。
 
-### 試しに聞きたいプロンプトの例
-
-src コードの中身を説明してください
+###　試したこと
+以下のサイトのように、text_splitterにseparator="\n"を追加したらうまくいった
+https://ict-worker.com/ai/langchain-chunk.html
+### 試しに聞いてみたプロンプトの例
+srcコードの中身を説明してください
+ソースコード内の認証の仕組みを教えてください
+Calendar.tsxの中身を教えてください
+Calendar.tsx内のリファクタはできますか
+先ほどの質問は覚えていますか
+react-router-domは使われていますか。使われているとしたらどこのコンポーネントですか
+続きを教えてください

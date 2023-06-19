@@ -31,7 +31,7 @@ def documents_to_chunks(documents: list) -> list:
     """
     Split documents into chunks.
     """
-    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0, separator="\n")
     chunks = text_splitter.split_documents(documents)
     return chunks
 
