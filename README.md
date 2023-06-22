@@ -70,3 +70,5 @@ Code: `GoogleCalendarClient` is a class that extends the `CalendarClient` abstra
 ### 今後こんなことに使えたらいいなーの例
 - ソースコードの保全（リファクタやドキュメントの拡充など）
 - テキストを埋め込み、問い合わせなどのサポート対応
+
+#　リバーと２
